@@ -1,0 +1,79 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Release Files
+        run: pnpm release
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: release
+          path: |
+            release/*.asar.gz
+            release/*Setup*.exe
+            release/*win.7z
+            release/*.dmg
+            release/*.AppImage
+          if-no-files-found: ignore
+
+  release:
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: download-artifacts
+        id: download
+        uses: actions/download-artifact@v4
+        with:
+          path: release-artifacts
+
+      - name: list all release files
+        run: |
+          ls -R ${{steps.download.outputs.download-path}}
+
+      - name: release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ${{steps.download.outputs.download-path}}/**/*
+          name: Release ${{ github.ref_name }}
+          prerelease: true
+          token: ${{ secrets.TOKEN }}
+
+      - name: changelog
+        run: npx changelogithub --prerelease
+        env:
+          GITHUB_TOKEN: ${{secrets.TOKEN}}

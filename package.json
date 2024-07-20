@@ -1,0 +1,35 @@
+{
+  "name": "playground",
+  "version": "0.0.1",
+  "description": "test playground",
+  "author": "subframe7536",
+  "main": "dist-entry/entry.js",
+  "scripts": {
+    "dev": "chcp 65001 && vite",
+    "build": "tsc --noEmit && vite build",
+    "release": "pnpm run build && electron-builder -c electron-builder.config.js"
+  },
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344/"
+    }
+  },
+  "dependencies": {
+    "@napi-rs/image": "^1.9.2",
+    "better-sqlite3": "^11.0.0"
+  },
+  "devDependencies": {
+    "@subframe7536/eslint-config": "^0.7.2",
+    "@subframe7536/type-utils": "^0.1.6",
+    "@types/better-sqlite3": "^7.6.10",
+    "@types/node": "^20.14.11",
+    "electron": "28.2.10",
+    "electron-builder": "^24.13.3",
+    "electron-incremental-update": "2.0.0-beta.4",
+    "eslint": "^9.7.0",
+    "tree-kill": "^1.2.2",
+    "typesafe-electron-ipc": "^1.1.2",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.4"
+  }
+}
