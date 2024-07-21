@@ -40,6 +40,8 @@ jobs:
       - name: Check for changes
         id: git_status
         run: |
+          git branch
+          git remote -v
           if [[ $(git status --porcelain) ]]; then
             git diff
             echo "CHANGED=true" >> $GITHUB_OUTPUT
@@ -54,7 +56,7 @@ jobs:
           git config user.name "$GITHUB_ACTOR@users.noreply.github.com"
           git add .
           git commit -m "Update signature in Action"
-          git push github master
+          git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" master
 
       - name: release
         uses: softprops/action-gh-release@v2
