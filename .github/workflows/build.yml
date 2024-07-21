@@ -9,6 +9,10 @@ on:
 jobs:
   version:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -39,7 +43,7 @@ jobs:
       - name: Update version
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_msg: update version by action
+          commit_message: update version by action
 
       - name: release
         uses: softprops/action-gh-release@v2
