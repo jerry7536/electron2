@@ -37,13 +37,24 @@ jobs:
           UPDATER_PK: ${{ secrets.UPDATER_PK }}
           UPDATER_CERT: ${{ secrets.UPDATER_CERT }}
 
-      - name: Print diff
-        run: git diff
+      - name: Check for changes
+        id: git_status
+        run: |
+          if [[ $(git status --porcelain) ]]; then
+            git diff
+            echo "CHANGED=true" >> $GITHUB_OUTPUT
+          else
+            echo "CHANGED=false" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Update version
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: update version by action
+      - name: Commit changes
+        if: steps.git_status.outputs.changed == 'true'
+        run: |
+          git config user.email "$GITHUB_ACTOR"
+          git config user.name "$GITHUB_ACTOR@users.noreply.github.com"
+          git add .
+          git commit -m "Update signature in Action"
+          git push github master
 
       - name: release
         uses: softprops/action-gh-release@v2
