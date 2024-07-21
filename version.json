@@ -1,12 +1,12 @@
 {
   "beta": {
-    "version": "0.0.1",
+    "version": "0.1.2",
     "minimumVersion": "0.0.0",
-    "signature": "N3BnDo1ocQXoDkAhMsuGyUIthlUaSqzGlNIyjdjxGVsXZL2k_xfxBIymuwNjhq9JYq5d37JaAdG9_eIuStV6U-BGguPgkkhYwTWJVCXqAEjNTC35EL_EFlgDRRlDvp61jmcMzbuHFa5oXvjM_xOHgdrA7w8GyeA2lNnRrf-uXejbzxHsDPukbLosu2ksRJnzUfohThZbceg5T9ftgo1QgtOws0QtcVvKe93F7Gq-MraO-5pAgW2Vi_NJY3dR3YWabBgM9q3sDIrpbb0d06n3UUbm_-92IStfvjwGQepzOihHGOXQJ3zG3jUJe5FQb_n9ainNPdBl40tPGAP1c9gFU03jHLDdaf78ViMLD-yFSJAiG9SQiHBuUHMKjuBrwhnjwsemZtO7M9ncRfqffboIZXjLXrfpJ0W8YCC0yB9sG8QVjEy0oecC_us2_Kom-cGymTEErpO-aqmveY05eg1pJw",
-    "size": 9372
+    "signature": "9PmgOh0cmCOlwZYjskUJ3bbC7GZhzWKdTjYffuGITD-Y_xPYN0wA4ToA0xrXFyNsHmB7MIFkCyliBkXRAQoelM21vZz8wNyHlmjAt5aT5TXljrVXSYZAJ_fC_wyZxSU-HtH_M1S94WRp59OpKrGOWbE7SUIa8sTgnTt_tBN-QWl5Umu59riOVFAUA4-f8j4XCAR1Wn6K5qAh_MFMNmIa6WEQ9OaD_hR0uG5XSXVoF5PHBzV-QxWyNGZC7Vf7bgZ3rVL4n8PhuFxdeyt43XADBm2eh_5QBAphW8Zt9jSKbuyIFQ6beeiWhu7x9aPqPhaDV-dGEk3O4agluVcF80OoTsN8FlAib9o_POo_raaizpQK8OOjD11pyGsbiGLcylIASbtKo5oiejR2BLiqxVDBrZiU7iqqOM3bDmfgs-x2hCjvC9K9xXQsXoBgaBtsj2NmwpgP8c6e0YpGv1XyjvFFPw",
+    "size": 9352
   },
   "minimumVersion": "0.0.0",
-  "signature": "N3BnDo1ocQXoDkAhMsuGyUIthlUaSqzGlNIyjdjxGVsXZL2k_xfxBIymuwNjhq9JYq5d37JaAdG9_eIuStV6U-BGguPgkkhYwTWJVCXqAEjNTC35EL_EFlgDRRlDvp61jmcMzbuHFa5oXvjM_xOHgdrA7w8GyeA2lNnRrf-uXejbzxHsDPukbLosu2ksRJnzUfohThZbceg5T9ftgo1QgtOws0QtcVvKe93F7Gq-MraO-5pAgW2Vi_NJY3dR3YWabBgM9q3sDIrpbb0d06n3UUbm_-92IStfvjwGQepzOihHGOXQJ3zG3jUJe5FQb_n9ainNPdBl40tPGAP1c9gFU03jHLDdaf78ViMLD-yFSJAiG9SQiHBuUHMKjuBrwhnjwsemZtO7M9ncRfqffboIZXjLXrfpJ0W8YCC0yB9sG8QVjEy0oecC_us2_Kom-cGymTEErpO-aqmveY05eg1pJw",
-  "size": 9372,
-  "version": "0.0.1"
+  "signature": "9PmgOh0cmCOlwZYjskUJ3bbC7GZhzWKdTjYffuGITD-Y_xPYN0wA4ToA0xrXFyNsHmB7MIFkCyliBkXRAQoelM21vZz8wNyHlmjAt5aT5TXljrVXSYZAJ_fC_wyZxSU-HtH_M1S94WRp59OpKrGOWbE7SUIa8sTgnTt_tBN-QWl5Umu59riOVFAUA4-f8j4XCAR1Wn6K5qAh_MFMNmIa6WEQ9OaD_hR0uG5XSXVoF5PHBzV-QxWyNGZC7Vf7bgZ3rVL4n8PhuFxdeyt43XADBm2eh_5QBAphW8Zt9jSKbuyIFQ6beeiWhu7x9aPqPhaDV-dGEk3O4agluVcF80OoTsN8FlAib9o_POo_raaizpQK8OOjD11pyGsbiGLcylIASbtKo5oiejR2BLiqxVDBrZiU7iqqOM3bDmfgs-x2hCjvC9K9xXQsXoBgaBtsj2NmwpgP8c6e0YpGv1XyjvFFPw",
+  "size": 9352,
+  "version": "0.1.2"
 }

@@ -6,7 +6,7 @@ handleUnexpectedErrors(console.error)
 initApp({
   provider: new GitHubProvider({
     username: 'jerry7536',
-    repo: 'electron',
+    repo: 'electron2',
   }),
   beforeStart(mainFilePath, logger) {
     logger?.debug(mainFilePath)

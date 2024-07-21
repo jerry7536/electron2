@@ -1,13 +1,14 @@
 {
   "name": "playground",
-  "version": "0.0.1",
+  "version": "0.1.5",
   "description": "test playground",
   "author": "subframe7536",
   "main": "dist-entry/entry.js",
   "scripts": {
     "dev": "chcp 65001 && vite",
     "build": "tsc --noEmit && vite build",
-    "release": "pnpm run build && electron-builder -c electron-builder.config.js"
+    "release:electron": "pnpm run build && electron-builder -c electron-builder.config.js",
+    "release": "bumpp --all"
   },
   "debug": {
     "env": {
@@ -23,9 +24,10 @@
     "@subframe7536/type-utils": "^0.1.6",
     "@types/better-sqlite3": "^7.6.10",
     "@types/node": "^20.14.11",
+    "bumpp": "^9.4.1",
     "electron": "28.2.10",
     "electron-builder": "^24.13.3",
-    "electron-incremental-update": "2.0.0-beta.4",
+    "electron-incremental-update": "2.0.0-beta.5",
     "eslint": "^9.7.0",
     "tree-kill": "^1.2.2",
     "typesafe-electron-ipc": "^1.1.2",

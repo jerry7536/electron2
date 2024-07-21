@@ -8,7 +8,7 @@ const target = `${name}.asar`
  */
 module.exports = {
   appId: 'org.test.Playground',
-  productName: 'Test',
+  productName: 'Playground',
   files: [
     'dist-entry',
     '!node_modules/**',
@@ -31,7 +31,8 @@ module.exports = {
       //   arch: ['x64', 'ia32'],
       // },
       // 'nsis',
-      'zip',
+      '7z',
+      'nsis',
       // '7z',
     ],
     signAndEditExecutable: false,
@@ -49,8 +50,7 @@ module.exports = {
     target: [
       {
         target: 'dmg',
-        // arch: ['x64', 'arm64', 'universal'],
-        arch: ['universal'],
+        arch: ['x64', 'arm64', 'universal'],
       },
     ],
     artifactName: '${productName}-${os}-${version}-${arch}.${ext}',
