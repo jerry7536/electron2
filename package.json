@@ -1,14 +1,14 @@
 {
   "name": "playground",
   "type": "module",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "test playground",
   "author": "subframe7536",
   "main": "dist-entry/entry.js",
   "scripts": {
     "dev": "chcp 65001 && vite",
     "build": "vite build",
-    "release:electron": "pnpm run build && electron-builder -c electron-builder.config.js",
+    "release:electron": "pnpm run build && electron-builder -c electron-builder.config.cjs",
     "release": "bumpp --all",
     "install": "electron-builder install-app-deps"
   },

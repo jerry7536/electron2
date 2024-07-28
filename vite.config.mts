@@ -7,7 +7,7 @@ export default defineConfig(({ command }) => {
   const isBuild = command === 'build'
   const electron = electronWithUpdater({
     isBuild,
-    logParsedOptions: { showKeys: true },
+    logParsedOptions: { showKeys: false },
     minify: false,
     bytecode: {
       enable: true,
