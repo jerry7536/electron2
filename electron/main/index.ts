@@ -1,7 +1,7 @@
 import { join } from 'node:path'
 import { Worker } from 'node:worker_threads'
 import { BrowserWindow, app, shell } from 'electron'
-import { disableHWAccForWin7, getPathFromAppNameAsar, getPathFromPreload, getPathFromPublic, isDev, isMac, loadPage, requireNative, setAppUserModelId, singleInstance } from 'electron-incremental-update/utils'
+import { disableHWAccForWin7, getPathFromAppNameAsar, getPathFromMain, getPathFromPreload, getPathFromPublic, isDev, isMac, loadPage, requireNative, setAppUserModelId, singleInstance } from 'electron-incremental-update/utils'
 import { startupWithUpdater } from 'electron-incremental-update'
 import { setupUpdater } from './updater'
 
@@ -17,7 +17,7 @@ export default startupWithUpdater((updater) => {
     win = new BrowserWindow({
       title: 'Main window',
       icon: getPathFromPublic('favicon.ico'),
-      webPreferences: { preload: getPathFromPreload('index.js'), sandbox: false },
+      webPreferences: { preload: getPathFromPreload('index.mjs') },
     })
 
     loadPage(win)
@@ -42,7 +42,7 @@ export default startupWithUpdater((updater) => {
     .then(() => requireNative<typeof import('../native/db')>('db').test())
     .then(() => requireNative('image'))
     .then(() => {
-      const worker = new Worker(join(__dirname, './worker.js'))
+      const worker = new Worker(getPathFromMain('worker.js'))
       worker.postMessage('')
       console.log('hello')
     })

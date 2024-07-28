@@ -42,7 +42,7 @@ jobs:
       - name: Update version
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: update version by action
+          commit_message: update version info by action
 
       - name: release
         uses: softprops/action-gh-release@v2
@@ -98,7 +98,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fail_on_unmatched_files: false
 
-  logs:
+  changelog:
     runs-on: ubuntu-latest
     needs:
       - build
@@ -113,6 +113,6 @@ jobs:
           node-version: 20
 
       - name: changelog
-        run: npx changelogithub --prerelease
+        run: npx changelogithub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

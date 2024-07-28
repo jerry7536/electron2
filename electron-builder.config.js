@@ -9,12 +9,13 @@ const target = `${name}.asar`
 module.exports = {
   appId: 'org.test.Playground',
   productName: 'Playground',
+  artifactName: '${productName}-${os}-${version}-${arch}.${ext}',
   files: [
     'dist-entry',
     '!node_modules/**',
   ],
   npmRebuild: false,
-  compression: 'store',
+  // compression: 'store',
   asarUnpack: [
     '**/*.{node,dll}',
   ],
@@ -26,20 +27,13 @@ module.exports = {
   ],
   win: {
     target: [
-      // {
-      //   target: 'nsis',
-      //   arch: ['x64', 'ia32'],
-      // },
-      // 'nsis',
-      '7z',
       'nsis',
-      // '7z',
+      '7z',
     ],
     signAndEditExecutable: false,
     publisherName: author,
   },
   nsis: {
-    artifactName: '${productName}-${os}-${version}-${arch}-Setup.${ext}',
     shortcutName: '${productName}',
     uninstallDisplayName: '${productName}',
     createDesktopShortcut: true,
@@ -53,8 +47,6 @@ module.exports = {
         arch: ['x64', 'arm64', 'universal'],
       },
     ],
-    artifactName: '${productName}-${os}-${version}-${arch}.${ext}',
-    category: 'public.app-category.music',
     darkModeSupport: true,
     identity: null,
   },
@@ -64,31 +56,12 @@ module.exports = {
         target: 'AppImage',
         arch: ['x64'],
       },
-      // {
-      //   target: 'tar.gz',
-      //   arch: ['x64', 'arm64'],
-      // },
       {
         target: 'deb',
-        // arch: ['x64', 'armv7l', 'arm64'],
         arch: ['x64'],
       },
-      // {
-      //   target: 'rpm',
-      //   arch: ['x64'],
-      // },
-      // {
-      //   target: 'snap',
-      //   arch: ['x64'],
-      // },
-      // {
-      //   target: 'pacman',
-      //   arch: ['x64'],
-      // },
     ],
-    category: 'Music',
-    maintainer: 'subframe7536',
-    artifactName: '${productName}-${os}-${version}-${arch}.${ext}',
+    maintainer: author,
   },
   publish: null,
 }

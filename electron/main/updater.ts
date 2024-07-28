@@ -19,9 +19,18 @@ export function setupUpdater(updater: Updater) {
     'electron version:': process.versions.electron,
   })
 
-  updater.checkUpdate()
-  updater.on('update-available', console.log)
-  updater.on('update-unavailable', console.log)
+  updater.on('update-available', async ({ version }) => {
+    const { response } = await dialog.showMessageBox({
+      type: 'info',
+      buttons: ['Download', 'Later'],
+      message: `v${version} update available!`,
+    })
+    if (response !== 0) {
+      return
+    }
+    await updater.downloadUpdate()
+  })
+  updater.on('update-not-available', reason => console.log(reason))
   updater.on('download-progress', (data) => {
     console.log(data)
     main.send(BrowserWindow.getAllWindows()[0], 'msg', data)
@@ -29,26 +38,5 @@ export function setupUpdater(updater: Updater) {
   updater.on('update-downloaded', () => {
     updater.quitAndInstall()
   })
-  main.on('update::checkAndInstall', async () => {
-    const result = await updater.checkUpdate()
-    if (!result) {
-      return
-    }
-    const { response } = await dialog.showMessageBox({
-      type: 'info',
-      buttons: ['Download', 'Later'],
-      message: 'Application update available!',
-    })
-    if (response !== 0) {
-      return
-    }
-    await updater.downloadUpdate()
-  })
-  const sourcePath = getPathFromAppNameAsar()
-  const backPath = `${sourcePath}.bak`
-  main.on('update::restore', async () => {
-    console.log('restore')
-    // existsSync(backPath) && await unzipFile(backPath, sourcePath)
-    renameSync(backPath, `${backPath}1`)
-  })
+  updater.checkForUpdates()
 }

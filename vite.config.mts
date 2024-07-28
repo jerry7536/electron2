@@ -1,17 +1,22 @@
 import { readdir } from 'node:fs/promises'
+import { writeFileSync } from 'node:fs'
 import { defineConfig } from 'vite'
 import { debugStartup, electronWithUpdater } from 'electron-incremental-update/vite'
-import pkg from './package.json'
 
 export default defineConfig(({ command }) => {
   const isBuild = command === 'build'
   const electron = electronWithUpdater({
-    pkg,
     isBuild,
-    // logParsedOptions: { showKeys: true },
-    sourcemap: !isBuild,
-    bytecode: true,
-    minify: true,
+    logParsedOptions: { showKeys: true },
+    minify: false,
+    bytecode: {
+      enable: true,
+      beforeCompile(code, id) {
+        // writeFileSync(id.replace('.js', '.source.js'), code)
+        console.log(id)
+        return undefined
+      },
+    },
     main: {
       files: ['./electron/main/index.ts', './electron/main/worker.ts'],
       onstart: debugStartup,
@@ -24,6 +29,9 @@ export default defineConfig(({ command }) => {
         nativeModuleEntryMap: {
           db: './electron/native/db.ts',
           image: './electron/native/image.ts',
+        },
+        overrideEsbuildOptions: {
+          target: 'esnext',
         },
         postBuild: async ({ copyToEntryOutputDir }) => {
           copyToEntryOutputDir({
@@ -41,16 +49,14 @@ export default defineConfig(({ command }) => {
   })
 
   return {
-    plugins: [
-      electron,
-    ],
+    plugins: [electron],
 
     build: {
       sourcemap: false,
     },
 
     server: process.env.VSCODE_DEBUG && (() => {
-      const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
+      const url = new URL('http://127.0.0.1:3344/')
       return {
         host: url.hostname,
         port: +url.port,
